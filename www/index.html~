@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Scale Your Violin</title>
+  </head>
+  <body>
+    <nav>                                                                       
+            <button><a href= "izaak_home.html">Home</a></button>                
+            <button><a href= "izaak_contact.html">Contact</a></button>          
+            <button><a href= "izaak_bio.html">About</a></button>                
+            <button><a href= "izaak_teaching.html">Studio</a></button>          
+            <button><a href= "izaak_media.html">Media</a></button>              
+            <button><a href= "izaak_repertoire.html">Repertoire</a></button>    
+            <button><a href= "BBGstrings.com">BBG Strings</a></button>          
+            <button><a href= "conservethebow.com">Conservethebow</a></button>
+	    <button><a href= "resonance.html">Resonance Tool</a></button>
+	    
+    </nav>
+    <h1>Scale Your Violin</h1>
+    <p>
+      Hello, welcome to Scale Your Violin, a virtual violin studio dedicated to helping students find their best sound, fastest progress, and most effective technique possible!
+
+    Look around our site, or get in touch:
+    info@conservethebow.com</p>
+  </body>
+</html>
