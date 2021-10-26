@@ -19,4 +19,4 @@
 	  (:button (:a :href "index.html" "home"))
 	  (:button (:a :href "contact.html" "contact"))))
          (:body ,@body)
-	 (:footer "Scale Your Violin" (:a :href "https://www.github.com" "code at github.com")))))
+	 (:footer "Scale Your Violin" (:a :href "https://www.github.com/scale-your-violin" "code at github.com")))))
