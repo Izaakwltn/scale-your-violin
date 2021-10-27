@@ -14,5 +14,8 @@
 	       (:file "scale-your-page")
 	       (:module "www"
 		:serial t
-		:components ((:file "resonance")
+		:components ((:file "index")
+			     (:file "contact")
+			     (:file "teachers")
+			     (:file "resonance")
 			     (:file "resonance-output")))))

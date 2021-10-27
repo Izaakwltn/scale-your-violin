@@ -16,7 +16,9 @@
 	       :crossorigin "anonymous")
          (:title ,title)
 	 (:nav
-	  (:button (:a :href "index.html" "home"))
-	  (:button (:a :href "contact.html" "contact"))))
+	  (:button (:a :href "index.html" "Scale Your Violin"))
+	  (:button (:a :href "contact.html" "contact"))
+	  (:button (:a :href "teachers.html" "teachers"))
+	  (:button (:a :href "resonance.html" "Resonance Calculator"))))
          (:body ,@body)
 	 (:footer "Scale Your Violin" (:a :href "https://www.github.com/scale-your-violin" "code at github.com")))))
