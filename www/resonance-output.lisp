@@ -55,20 +55,53 @@
 
 
 ;;;;------------------------------------------------------------------------
-;;;;Scale Assessment
+;;;;Key Assessment
 ;;;;------------------------------------------------------------------------
 ;(vibratsia::assess-scale (vibratsia::build-scale root-option quality-option ;3) instrument-option)
 
-;(defvar quality-parse-list '(("major" 
-									       
-						 
-;(defvar scale-assessment)
+					;(defvar quality-parse-list '(("major"
+(defun lowest-note-available (note-name instrument)
+  "Finds the lowest octave of a particular note on an instrument"
+  (second (assoc (second (assoc note-name root-parse-list :test #'string-equal))
+  (mapcar #'(lambda (freq)
+			       (list (first (vibratsia::freq-to-note freq))
+				     freq))
+	  (vibratsia::frequency-ladder
+	   (vibratsia::lower-bound instrument)
+	   (vibratsia::freq-adjust (vibratsia::lower-bound instrument) 11))))))
 
-;(hunchentoot::define-easy-handler (scale-assess :uri "/scale-assess")
-;	(root-option quality-option octave-option instrument-option)
-;  (setf (hunchentoot:content-type*) "text/html")
-;  (setq scale-assessment (vibratsia::scale-assessment 
-;  (format nil "~a ~a ~a ~a" root-option quality-option octave-option instrument-option))))
+(defvar key-assessment)
+(defvar instrument-object)
+(hunchentoot::define-easy-handler (scale-assess :uri "/key-assess")
+	(root-option quality-option instrument-option)
+  (setf (hunchentoot:content-type*) "text/html")
+  (setq instrument-object (eval
+			 (second
+			  (assoc instrument-option instrument-parse-list :test #'string-equal))))
+  (setq key-assessment (vibratsia::assess-scale
+			(vibratsia::build-scale
+			 (lowest-note-available root-option instrument-object)
+			 (second (assoc quality-option quality-parse-list :test #'string-equal))
+			 3)
+			instrument-object))
+			
+  (with-page (:title "Key Resonance Profile")
+    (:header
+     (:h1 "Resonance Calculator")
+     (:h2 "Key Resonance Profile")
+     (:p (format nil "A comprehensive analysis of the key ~a ~a, as played on the ~a"
+		 (first (freq-to-note (vibratsia::root (vibratsia::scale key-assessment))))
+		 (vibratsia::quality (vibratsia::scale key-assessment))
+		 (vibratsia::name (vibratsia::instr key-assessment)))))
+    (:section
+     (:h5 (format nil "Average Sympathetic Vibration Rating:  ~a"
+		  (vibratsia::avg-rating key-assessment))))
+    (:section
+     (:h5 "The notes of the key ranked by resonance on the chosen instrument:")
+     (:ul
+      (loop for n in (vibratsia::rank-list key-assessment)
+	    do (:li (format nil "~a" n)))))))
+     
 
 ;;;;find the lowest iteration of the key on the instrument, generate a 3 octave scale, return
 					;the scale assessment
