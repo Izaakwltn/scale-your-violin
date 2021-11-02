@@ -8,7 +8,7 @@
 (defvar note-option-list (mapcar #'vibratsia::freq-to-note
 			     (vibratsia::frequency-ladder 16.35 4185.6)))
 
-(defvar instrument-option-list '("violin" "viola" "cello" "bass"))
+(defvar instrument-option-list '("violin" "viola" "cello" "bass" "hardingfele"))
 
 (defvar instrument-parse-list '(("violin"
 				 (vibratsia::luthier 'violin '(196 293.66 440 659.25)))
@@ -17,10 +17,11 @@
 				("CELLO"
 				 (vibratsia::luthier 'cello '(65.4 98 146.8  220)))
 				("BASS"
-				 (vibratsia::luthier 'bass '(65.4 98 146.8  220)))))
-				 ;("HARDINGFELE"
-				  ;(vibratsia::luthier 'hardanger-fiddle
-				  ; vibratsia::hardanger-fiddle-strings))))
+				 (vibratsia::luthier 'bass '(65.4 98 146.8  220)))
+				("hardingfele"
+				 (vibratsia::luthier 'hardanger-fiddle
+				  vibratsia::hardanger-fiddle-strings))))
+				 
 
 (defvar root-option-list '(C C# D D# E F F# G G# A Bb B))
 
@@ -99,7 +100,9 @@ Sympathetic vibration occurs when the overtones of an executed note overlap with
 	(loop for instrument in scale-your-violin::instrument-option-list
 	      do (:option :value instrument
 			  (format nil "~a" instrument))))
-     (:input :type "submit" :value "Assess Note" :class "button" )))))
+      (:input :type "submit" :value "Assess Note" :class "button" )))
+    (:footer
+     (:p "Made using " (:a :href "https://www.github.com/Izaakwltn/vibratsia" "Vibratsia")))))
 
     (push
  (hunchentoot:create-prefix-dispatcher "/resonance.html" #'resonance-calculator)

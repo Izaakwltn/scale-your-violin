@@ -51,7 +51,11 @@
 				(vibratsia::note-name (second n))
 				(vibratsia::octave (second n))
 				(vibratsia::freq-float (second n)))))))
-    (:button (:a :href "/resonance.html" "Try Another Calculation" ))))
+    (:button
+	     (progn
+	       (push (hunchentoot:create-prefix-dispatcher "/resonance.html" #'resonance-calculator)
+		     hunchentoot:*dispatch-table*)
+	       (:a :href "/resonance.html" "Try another calculation")))))
 
 
 ;;;;------------------------------------------------------------------------
@@ -100,7 +104,12 @@
      (:h5 "The notes of the key ranked by resonance on the chosen instrument:")
      (:ul
       (loop for n in (vibratsia::rank-list key-assessment)
-	    do (:li (format nil "~a" n)))))))
+	    do (:li (format nil "~a" n)))))
+    (:button
+	     (progn
+	       (push (hunchentoot:create-prefix-dispatcher "/resonance.html" #'resonance-calculator)
+		     hunchentoot:*dispatch-table*)
+	       (:a :href "/resonance.html" "Try another calculation")))))
      
 
 ;;;;find the lowest iteration of the key on the instrument, generate a 3 octave scale, return
@@ -141,4 +150,8 @@
 	      do (:ul
 		  (loop for n in note
 			do (:li (format nil "~a" n)))))))
-    (:button (:a :href "/resonance.html" "Try Another Calculation"))))
+    (:button
+	     (progn
+	       (push (hunchentoot:create-prefix-dispatcher "/resonance.html" #'resonance-calculator)
+		     hunchentoot:*dispatch-table*)
+	       (:a :href "/resonance.html" "Try another calculation")))))
