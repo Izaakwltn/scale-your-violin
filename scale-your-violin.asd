@@ -15,6 +15,8 @@
 	       (:module "www"
 		:serial t
 		:components ((:file "index")
+			     (:file "about")
+			     (:file "blog")
 			     (:file "contact")
 			     (:file "teachers")
 			     (:file "resonance")

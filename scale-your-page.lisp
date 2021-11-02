@@ -16,8 +16,11 @@
        (:header
 	 (:nav
 	  (:a :style "color:black;" :href "index.html" "Scale Your Violin")
-	  (:a :href "contact.html" "Contact")
-	  (:a :href "teachers.html" "Teachers")
-	  (:a :href "resonance.html" "Resonance Calculator")))
+	  (:a :href "about.html" "About")
+	  (:a :href "blog.html" "Blog")
+	  (:a :href "resonance.html" "Resonance Calculator")
+	  (:a :href "contact.html" "Contact")))
          (:body ,@body)
-	 (:footer "Scale Your Violin" (:a :href "https://www.github.com/Izaakwltn/scale-your-violin" "code at github.com")))))
+	 (:footer "Scale Your Violin "
+		  (:a :href "https://www.github.com/Izaakwltn/scale-your-violin"
+		            "code at github.com")))))
